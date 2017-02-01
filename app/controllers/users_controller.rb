@@ -5,17 +5,16 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if params[:password] == params[:password_confirmation]
-      flash.now[:msg] = "iguales"
-      redirect_to signup_path
+    if params[:user][:password] == params[:user][:password_confirmation]
       # if @user.save
       #   session[:user_id] = @user.id
       #   redirect_to '/'
       # else
+      #   flash[:msg] = "There was an error creating your account, please try again later"
       #   redirect_to signup_path
       # end 
     else
-      flash.now[:msg] = "Nembe men"
+      flash[:msg] = "Nembe men"
       redirect_to signup_path
     end
   end

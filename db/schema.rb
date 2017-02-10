@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20170109184839) do
   end
 
   create_table "recipes", force: :cascade do |t|
+    t.string   "comments"
+    t.string   "owner"
     t.integer  "meal_id"
     t.integer  "ingredient_id"
     t.integer  "user_id"
@@ -46,6 +48,8 @@ ActiveRecord::Schema.define(version: 20170109184839) do
     t.string   "username"
     t.string   "email"
     t.string   "password_digest"
+    t.string   "image"
+    t.string   "role"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

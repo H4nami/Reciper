@@ -4,6 +4,7 @@ class CreateMeals < ActiveRecord::Migration[5.0]
       t.string :title
       t.string :description
       t.string :image
+      t.string :process
       t.timestamps
     end
   end

@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  before_action :require_user, only: [:show]
 
   def new
   end
@@ -8,7 +7,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      redirect_to session_path
+      redirect_to edit_path
     else
       flash[:msg] = "User and password do not match" 
       redirect_to login_path
@@ -18,9 +17,6 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to '/'
-  end
-
-  def show
   end
 
 end

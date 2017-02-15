@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if params[:user][:password] == params[:user][:password_confirmation]
       if @user.save
         session[:user_id] = @user.id
-        redirect_to session_path
+        redirect_to edit_path
       else
         flash[:msg] = "There was an error creating your account, please try again later"
         redirect_to signup_path
@@ -28,7 +28,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update_attributes(user_params)
-      redirect_to session_path
+      flash[:msg] = "Succed, information updated"
+      redirect_to edit_path
     else
       render edit_path
     end
